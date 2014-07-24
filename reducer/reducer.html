@@ -1,0 +1,57 @@
+<html>
+<head>
+	<meta http-equiv='Content-Type' content='text/html; charset=utf-8'/>
+	<title>
+		Brett Wines - reducer
+	</title>
+	<link rel="stylesheet" type="text/css" href="../style.css" />
+	<script src="./y/parser.js"></script>
+	<script src="./y/y.js"></script>
+</head>
+<body>
+	<br><br><br><br><br>
+	<div align="center">
+		<a href="../index.html"><img src="../img/hands.png" alt="Recursion is beautiful." height="175" width="175"/></a>
+	</div>
+	<br>
+	<body bgcolor="#002b36">
+		<h1 align="center">
+			Brett Wines
+		</h1>
+	<br><br><br><br><br>
+
+	<table>
+		<tr>
+			<td valign="top"><img src="../img/y.png" alt="unutil.h" height="120" width="100"/></td>
+			<td valign="top">
+				<div class="bigprojname" align="left">reducer</div>
+			</br>
+				<div class="projdesc" align="left">
+					`reducer` is a small JavaScript program that beta-reduces untyped Lambda Calculus expressions. It's my first project in JavaScript.
+
+					</br></br>
+					Known issues: does not yet play well with the predecessor function for Church numerals ("((\n . \f . \x .n (\g . \h . h (g f)) (\u . x) (\u . u))) (\f . \x . f x)").
+
+					</br></br>
+					<input id="input" autofocus class="reducer_input" onkeydown="if (event.keyCode == 13) {reduce_in_place(); document.getElementById( 'output' ).scrollIntoView();}" style="width:50%" value="(\x . (x x)) (\x . (x x))"></input>
+					</br>
+
+					<button id="reduce-button" onclick="reduce(); document.getElementById('input').focus();">reduce</button>
+					<button id="reduce-in-place-button" onclick="reduce_in_place(); document.getElementById('input').focus();">reduce in place</button>
+					<button id="clear-button" onclick="clear_output(); document.getElementById('input').focus();">clear</button>
+
+					<select id="dropdown" name="select" onchange="setInputAndOutputFromDropdown(); document.getElementById('input').focus();">
+						<option selected value="(\x . (x x)) (\x . (x x))">omega combinator (divergent)</option>
+						<option value="\f . (\x . f (\y . (x x) y)) (\x . f (\y . (x x) y))">call-by-value z combinator</option> 
+						<option value="\f . (\x . f (x x)) (\x . f (x x))">call-by-name y combinator</option>
+						<option value="(\m . \n . \f . \x . m f (n f x)) (\f . \x . f x) (\f . \x . f (f x))">(+) 1 2 (Church encoding)</option>
+						<option value="(\m . \n . \f . m (n f)) (\f . (\x . (f (f x)))) (\f . (\x . (f (f (f x)))))">(*) 2 3 (Church encoding)</option>
+					</select>
+					
+					<div id="output" class="reducer_output"></div>
+				</div>
+			</td>
+		</tr>
+	</table>
+</body>
+</html>
